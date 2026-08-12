@@ -1,1 +1,1 @@
-const products=[{name:'Flower',price:79000,cat:'cute',image:'assets/flower.jpg'}];
+const products=[{name:'Flowers',price:121000,cat:'long',image:'assets/flowers.jpg'},{name:'Mild',price:149000,cat:'long',image:'assets/flowers2.jpg'}];
