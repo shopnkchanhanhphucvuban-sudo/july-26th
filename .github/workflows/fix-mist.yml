@@ -1,0 +1,31 @@
+name: Fix Mist hover image
+on:
+  push:
+    paths:
+      - '.github/workflows/fix-mist.yml'
+permissions:
+  contents: write
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Update Mist hover image
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('shop.html')
+          s=p.read_text(encoding='utf-8')
+          old='https://raw.githubusercontent.com/shopnkchanhanhphucvuban-sudo/july-26th/main/assets/mistt.PNG" alt="Mist"><img class="hover-photo" src="https://raw.githubusercontent.com/shopnkchanhanhphucvuban-sudo/july-26th/main/assets/mistt.PNG"'
+          new='https://raw.githubusercontent.com/shopnkchanhanhphucvuban-sudo/july-26th/main/assets/mistt.PNG" alt="Mist"><img class="hover-photo" src="https://raw.githubusercontent.com/shopnkchanhanhphucvuban-sudo/july-26th/main/assets/mist%205.PNG"'
+          if old in s:
+              s=s.replace(old,new,1)
+          p.write_text(s,encoding='utf-8')
+          PY
+      - name: Commit change
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add shop.html
+          git diff --cached --quiet || git commit -m 'Fix Mist hover image'
+          git push
