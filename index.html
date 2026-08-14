@@ -1,1 +1,40 @@
-<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="refresh" content="0;url=shop-v2.html"><title>July 26th</title></head><body><a href="shop-v2.html">Ghé thăm July 26th</a></body></html>
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>July 26th — Knit Scarf Shop</title>
+<style>
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#fffdfa}
+#shopFrame{display:block;width:100%;height:100vh;border:0}
+</style>
+</head>
+<body>
+<iframe id="shopFrame" src="shop-v2.html" title="July 26th"></iframe>
+<script>
+const frame=document.getElementById('shopFrame');
+frame.addEventListener('load',()=>{
+  try{
+    const d=frame.contentDocument;
+    const s=d.createElement('style');
+    s.textContent=`
+      @media(min-width:801px){
+        .grid{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:18px!important}
+        .product-photo{height:320px!important}
+        .info h3{font-size:22px!important}
+      }
+      @media(max-width:800px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:12px!important}.product-photo{height:250px!important}}
+    `;
+    d.head.appendChild(s);
+
+    // Ảnh lu.PNG là ảnh chung dùng ở mặt trước của cả 4 thẻ sản phẩm.
+    // Ảnh hover riêng của từng sản phẩm vẫn được giữ nguyên.
+    d.querySelectorAll('.product-photo .main-photo').forEach(img=>{
+      img.src='lu.PNG';
+      img.removeAttribute('srcset');
+    });
+  }catch(e){console.error('July 26th frame styling error',e)}
+});
+</script>
+</body>
+</html>
