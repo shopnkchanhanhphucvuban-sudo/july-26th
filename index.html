@@ -26,13 +26,6 @@ frame.addEventListener('load',()=>{
       @media(max-width:800px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:12px!important}.product-photo{height:250px!important}}
     `;
     d.head.appendChild(s);
-
-    // Ảnh lu.PNG là ảnh chung dùng ở mặt trước của cả 4 thẻ sản phẩm.
-    // Ảnh hover riêng của từng sản phẩm vẫn được giữ nguyên.
-    d.querySelectorAll('.product-photo .main-photo').forEach(img=>{
-      img.src='lu.PNG';
-      img.removeAttribute('srcset');
-    });
   }catch(e){console.error('July 26th frame styling error',e)}
 });
 </script>
